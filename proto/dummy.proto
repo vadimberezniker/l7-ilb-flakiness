@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package dummy;
+
+message RegisterRequest {
+  string id = 1;
+}
+
+message RegisterResponse {
+
+}
+
+message PingRequest {}
+message PingResponse{}
+
+service Dummy {
+  // Register is a long running stream.
+  rpc Register(stream RegisterRequest)
+      returns (stream RegisterResponse) {}
+
+  rpc Ping(PingRequest)
+      returns (PingResponse) {}
+}
